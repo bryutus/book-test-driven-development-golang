@@ -5,15 +5,23 @@ import (
 )
 
 func TestMultiplication(t *testing.T) {
-	five := newDollar(5)
 
-	product := five.times(2)
-	if got, want := product.Amount, 10; got != want {
-		t.Errorf("got %v want %v", got, want)
+	testCases := []struct {
+		desc string
+		in   int
+		want int
+	}{
+		{"$5*2=10がとなること", 2, 10},
+		{"$5*3=15がとなること", 3, 15},
 	}
 
-	product = five.times(3)
-	if got, want := product.Amount, 15; got != want {
-		t.Errorf("got %v want %v", got, want)
+	five := newDollar(5)
+
+	for _, test := range testCases {
+		t.Run(test.desc, func(t *testing.T) {
+			if got := five.times(test.in); got.Amount != test.want {
+				t.Errorf("Doller.times(): got.Amout %v want %v", got.Amount, test.want)
+			}
+		})
 	}
 }
