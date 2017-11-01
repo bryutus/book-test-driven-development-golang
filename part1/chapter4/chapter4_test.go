@@ -19,8 +19,8 @@ func TestMultiplication(t *testing.T) {
 
 	for _, test := range testCases {
 		t.Run(test.desc, func(t *testing.T) {
-			if got := five.times(test.in); got.Amount != test.want {
-				t.Errorf("Doller.times(): got.Amout %v want %v", got.Amount, test.want)
+			if got, want := five.times(test.in), newDollar(test.want); got != want {
+				t.Errorf("Doller.times(): got %v want %v", got, want)
 			}
 		})
 	}
