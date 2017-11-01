@@ -13,7 +13,5 @@ func (d Dollar) equals(dollar Dollar) bool {
 }
 
 func newDollar(amount int) Dollar {
-	d := Dollar{}
-	d.Amount = amount
-	return d
+	return Dollar{Amount: amount}
 }
