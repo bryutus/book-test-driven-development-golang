@@ -11,8 +11,8 @@ func TestMultiplication(t *testing.T) {
 		in   int
 		want int
 	}{
-		{"$5*2=10がとなること", 2, 10},
-		{"$5*3=15がとなること", 3, 15},
+		{"$5*2=10となること", 2, 10},
+		{"$5*3=15となること", 3, 15},
 	}
 
 	five := newDollar(5)
