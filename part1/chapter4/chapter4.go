@@ -1,17 +1,17 @@
 package chapter4
 
 type Dollar struct {
-	Amount int
+	amount int
 }
 
 func (d Dollar) times(multiplier int) Dollar {
-	return newDollar(d.Amount * multiplier)
+	return newDollar(d.amount * multiplier)
 }
 
 func (d Dollar) equals(dollar Dollar) bool {
-	return d.Amount == dollar.Amount
+	return d.amount == dollar.amount
 }
 
 func newDollar(amount int) Dollar {
-	return Dollar{Amount: amount}
+	return Dollar{amount: amount}
 }
