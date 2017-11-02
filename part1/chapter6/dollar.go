@@ -2,7 +2,6 @@ package chapter6
 
 type Dollar struct {
 	Money
-	amount int
 }
 
 func (d Dollar) times(multiplier int) Dollar {
@@ -14,5 +13,5 @@ func (d Dollar) equals(dollar Dollar) bool {
 }
 
 func newDollar(amount int) Dollar {
-	return Dollar{amount: amount}
+	return Dollar{Money{amount: amount}}
 }

@@ -1,3 +1,5 @@
 package chapter6
 
-type Money struct{}
+type Money struct {
+	amount int
+}
