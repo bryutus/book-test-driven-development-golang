@@ -1,6 +1,7 @@
 package chapter6
 
 type Franc struct {
+	Money
 	amount int
 }
 

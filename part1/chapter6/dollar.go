@@ -1,6 +1,7 @@
 package chapter6
 
 type Dollar struct {
+	Money
 	amount int
 }
 
