@@ -1,18 +1,9 @@
 package chapter6
 
-type Franc struct {
-	Money
-	amount int
+type franc struct {
+	money
 }
 
-func (f Franc) times(multiplier int) Franc {
-	return newFranc(f.amount * multiplier)
-}
-
-func (f Franc) equals(franc Franc) bool {
-	return f.amount == franc.amount
-}
-
-func newFranc(amount int) Franc {
-	return Franc{amount: amount}
+func (f franc) times(multiplier int) Money {
+	return newMoney(Franc, f.amount*multiplier)
 }

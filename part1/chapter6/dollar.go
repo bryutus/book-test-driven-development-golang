@@ -1,17 +1,9 @@
 package chapter6
 
-type Dollar struct {
-	Money
+type dollar struct {
+	money
 }
 
-func (d Dollar) times(multiplier int) Dollar {
-	return newDollar(d.amount * multiplier)
-}
-
-func (d Dollar) equals(dollar Dollar) bool {
-	return d.amount == dollar.amount
-}
-
-func newDollar(amount int) Dollar {
-	return Dollar{Money{amount: amount}}
+func (d dollar) times(multiplier int) Money {
+	return newMoney(Dollar, d.amount*multiplier)
 }
