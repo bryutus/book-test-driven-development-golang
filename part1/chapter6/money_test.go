@@ -29,35 +29,21 @@ func TestMultiplication(t *testing.T) {
 func TestEquality(t *testing.T) {
 
 	testCases := []struct {
-		desc string
-		in   int
-		want bool
+		desc     string
+		currency Currency
+		in       int
+		want     bool
 	}{
-		{"5ドルと5ドルが同じ価値であること", 5, true},
-		{"5ドルと6ドルが異なる価値であること", 6, false},
+		{"5ドルと5ドルが同じ価値であること", Dollar, 5, true},
+		{"5ドルと6ドルが異なる価値であること", Dollar, 6, false},
+		{"5CHFと5CHFが同じ価値であること", Franc, 5, true},
+		{"5CHFと6CHFが異なる価値であること", Franc, 6, false},
 	}
 
 	for _, test := range testCases {
 		t.Run(test.desc, func(t *testing.T) {
-			if got := newMoney(Dollar, 5).equals(newMoney(Dollar, test.in)); got != test.want {
-				t.Errorf("Doller.equals(): got %v want %v", got, test.want)
-			}
-		})
-	}
-
-	testCases = []struct {
-		desc string
-		in   int
-		want bool
-	}{
-		{"5CHFと5CHFが同じ価値であること", 5, true},
-		{"5CHFと6CHFが異なる価値であること", 6, false},
-	}
-
-	for _, test := range testCases {
-		t.Run(test.desc, func(t *testing.T) {
-			if got := newMoney(Franc, 5).equals(newMoney(Franc, test.in)); got != test.want {
-				t.Errorf("Franc.equals(): got %v want %v", got, test.want)
+			if got := newMoney(test.currency, 5).equals(newMoney(test.currency, test.in)); got != test.want {
+				t.Errorf("Money.equals(): got %v want %v", got, test.want)
 			}
 		})
 	}
