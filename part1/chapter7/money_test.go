@@ -29,20 +29,22 @@ func TestMultiplication(t *testing.T) {
 func TestEquality(t *testing.T) {
 
 	testCases := []struct {
-		desc     string
-		currency Currency
-		in       int
-		want     bool
+		desc         string
+		currencySrc  Currency
+		currencyDest Currency
+		in           int
+		want         bool
 	}{
-		{"5ドルと5ドルが同じ価値であること", Dollar, 5, true},
-		{"5ドルと6ドルが異なる価値であること", Dollar, 6, false},
-		{"5CHFと5CHFが同じ価値であること", Franc, 5, true},
-		{"5CHFと6CHFが異なる価値であること", Franc, 6, false},
+		{"5ドルと5ドルが同じ価値であること", Dollar, Dollar, 5, true},
+		{"5ドルと6ドルが異なる価値であること", Dollar, Dollar, 6, false},
+		{"5CHFと5CHFが同じ価値であること", Franc, Franc, 5, true},
+		{"5CHFと6CHFが異なる価値であること", Franc, Franc, 6, false},
+		{"5ドルと5CHFが異なる価値であること", Dollar, Franc, 5, false},
 	}
 
 	for _, test := range testCases {
 		t.Run(test.desc, func(t *testing.T) {
-			if got := newMoney(test.currency, 5).equals(newMoney(test.currency, test.in)); got != test.want {
+			if got := newMoney(test.currencySrc, 5).equals(newMoney(test.currencyDest, test.in)); got != test.want {
 				t.Errorf("Money.equals(): got %v want %v", got, test.want)
 			}
 		})
