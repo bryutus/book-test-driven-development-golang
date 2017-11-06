@@ -5,5 +5,5 @@ type franc struct {
 }
 
 func (f franc) times(multiplier int) Money {
-	return newMoney(Franc, f.amount*multiplier)
+	return newMoney(f.currency, f.amount*multiplier)
 }
