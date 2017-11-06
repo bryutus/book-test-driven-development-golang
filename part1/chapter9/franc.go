@@ -7,3 +7,7 @@ type franc struct {
 func (f franc) times(multiplier int) Money {
 	return newMoney(Franc, f.amount*multiplier)
 }
+
+func (f franc) getCurrency() Currency {
+	return "CHF"
+}

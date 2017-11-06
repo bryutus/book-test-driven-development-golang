@@ -1,10 +1,10 @@
 package chapter9
 
-type Currency int
+type Currency string
 
 const (
-	Dollar = iota
-	Franc
+	Dollar = "USD"
+	Franc  = "CHF"
 )
 
 type Money interface {
@@ -35,8 +35,4 @@ func (m money) equals(money Money) bool {
 
 func (m money) getAmount() int {
 	return m.amount
-}
-
-func (m money) getCurrency() Currency {
-	return m.currency
 }
