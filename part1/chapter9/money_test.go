@@ -72,3 +72,23 @@ func TestFrancMultiplication(t *testing.T) {
 		})
 	}
 }
+
+func TestCurrency(t *testing.T) {
+
+	testCases := []struct {
+		desc string
+		in   Currency
+		want Currency
+	}{
+		{"Dollarの通貨がUSDとなること", Dollar, "USD"},
+		{"Francの通貨がCHFとなること", Franc, "CHF"},
+	}
+
+	for _, test := range testCases {
+		t.Run(test.desc, func(t *testing.T) {
+			if got := newMoney(test.in, 1).getCurrency(); got != test.want {
+				t.Errorf("Money.getCurrency(): got %v want %v", got, test.want)
+			}
+		})
+	}
+}
