@@ -36,3 +36,7 @@ func (m money) equals(money Money) bool {
 func (m money) getAmount() int {
 	return m.amount
 }
+
+func (m money) getCurrency() Currency {
+	return m.currency
+}
