@@ -29,6 +29,10 @@ func newMoney(currency Currency, amount int) Money {
 	return dollar{m}
 }
 
+func (m money) times(multiplier int) Money {
+	return newMoney(m.currency, m.amount*multiplier)
+}
+
 func (m money) equals(money Money) bool {
 	return m.amount == money.getAmount() && m.currency == money.getCurrency()
 }
