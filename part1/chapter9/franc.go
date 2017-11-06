@@ -9,5 +9,5 @@ func (f franc) times(multiplier int) Money {
 }
 
 func (f franc) getCurrency() Currency {
-	return "CHF"
+	return f.currency
 }

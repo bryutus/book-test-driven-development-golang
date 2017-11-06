@@ -9,5 +9,5 @@ func (d dollar) times(multiplier int) Money {
 }
 
 func (d dollar) getCurrency() Currency {
-	return "USD"
+	return d.currency
 }
