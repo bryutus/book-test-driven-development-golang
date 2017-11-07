@@ -37,8 +37,6 @@ func TestEquality(t *testing.T) {
 	}{
 		{"5ドルと5ドルが同じ価値であること", Dollar, Dollar, 5, true},
 		{"5ドルと6ドルが異なる価値であること", Dollar, Dollar, 6, false},
-		{"5CHFと5CHFが同じ価値であること", Franc, Franc, 5, true},
-		{"5CHFと6CHFが異なる価値であること", Franc, Franc, 6, false},
 		{"5ドルと5CHFが異なる価値であること", Dollar, Franc, 5, false},
 	}
 
