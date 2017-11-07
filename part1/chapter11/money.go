@@ -20,13 +20,7 @@ type money struct {
 }
 
 func newMoney(currency Currency, amount int) Money {
-	m := money{amount: amount, currency: currency}
-
-	if currency == Franc {
-		return franc{m}
-	}
-
-	return dollar{m}
+	return money{amount: amount, currency: currency}
 }
 
 func (m money) times(multiplier int) Money {
