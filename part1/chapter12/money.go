@@ -10,6 +10,7 @@ const (
 type Money interface {
 	times(int) Money
 	equals(Money) bool
+	plus(Money) Money
 	getAmount() int
 	getCurrency() Currency
 }
@@ -29,6 +30,10 @@ func (m money) times(multiplier int) Money {
 
 func (m money) equals(money Money) bool {
 	return m.amount == money.getAmount() && m.currency == money.getCurrency()
+}
+
+func (m money) plus(addend Money) Money {
+	return newMoney(m.currency, m.amount+addend.getAmount())
 }
 
 func (m money) getAmount() int {
