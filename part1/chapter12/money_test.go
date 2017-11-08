@@ -68,3 +68,23 @@ func TestCurrency(t *testing.T) {
 		})
 	}
 }
+
+func TestSimpleAddition(t *testing.T) {
+
+	testCases := []struct {
+		desc string
+		a    int
+		b    int
+		sum  int
+	}{
+		{"5ドル足す5ドルが10ドルとなること", 5, 5, 10},
+	}
+
+	for _, test := range testCases {
+		t.Run(test.desc, func(t *testing.T) {
+			if got, want := newMoney(Dollar, test.a).plus(newMoney(Dollar, test.b)), newMoney(Dollar, test.sum); got != want {
+				t.Errorf("Money.plus(): got %v want %v", got, want)
+			}
+		})
+	}
+}
