@@ -74,15 +74,18 @@ func TestSimpleAddition(t *testing.T) {
 	testCases := []struct {
 		desc string
 		a    int
-		b    int
-		sum  int
+		want int
 	}{
-		{"5ドル足す5ドルが10ドルとなること", 5, 5, 10},
+		{"5ドル足す5ドルが10ドルとなること", 5, 10},
 	}
 
 	for _, test := range testCases {
 		t.Run(test.desc, func(t *testing.T) {
-			if got, want := newMoney(Dollar, test.a).plus(newMoney(Dollar, test.b)), newMoney(Dollar, test.sum); got != want {
+			five := newMoney(Dollar, test.a)
+			sum := five.plus(five)
+			bank := newBank()
+			reduced := bank.reduce(sum, Dollar)
+			if got, want := reduced, newMoney(Dollar, test.want); got != want {
 				t.Errorf("Money.plus(): got %v want %v", got, want)
 			}
 		})
