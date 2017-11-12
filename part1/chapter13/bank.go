@@ -12,5 +12,6 @@ func newBank() Bank {
 }
 
 func (b bank) reduce(source Expression, to Currency) Money {
-	return newMoney(Dollar, 10)
+	amount := source.getAugend().getAmount() + source.getAddend().getAmount()
+	return newMoney(to, amount)
 }
