@@ -13,6 +13,7 @@ type Money interface {
 	plus(Money) Expression
 	getAmount() int
 	getCurrency() Currency
+	Expression
 }
 
 type money struct {
@@ -42,4 +43,16 @@ func (m money) getAmount() int {
 
 func (m money) getCurrency() Currency {
 	return m.currency
+}
+
+func (m money) getAugend() Money {
+	return m
+}
+
+func (m money) getAddend() Money {
+	return m
+}
+
+func (m money) reduce(Currency) Money {
+	return m
 }
