@@ -110,3 +110,10 @@ func TestReduceSum(t *testing.T) {
 		t.Errorf("sum.reduce(): got %v want %v", got, want)
 	}
 }
+
+func TestReduceMoney(t *testing.T) {
+	bank := newBank()
+	if got, want := bank.reduce(newMoney(Dollar, 1), Dollar), newMoney(Dollar, 1); got != want {
+		t.Errorf("bank.reduce(): got %v want %v", got, want)
+	}
+}
