@@ -33,7 +33,7 @@ func (m money) equals(money Money) bool {
 }
 
 func (m money) plus(addend Money) Expression {
-	return newMoney(m.currency, m.amount+addend.getAmount())
+	return newSum(m, addend)
 }
 
 func (m money) getAmount() int {

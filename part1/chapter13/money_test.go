@@ -95,12 +95,10 @@ func TestSimpleAddition(t *testing.T) {
 func TestPlusResultSmu(t *testing.T) {
 	five := newMoney(Dollar, 5)
 	sum := five.plus(five)
-	bank := newBank()
-	if got, want := sum.augend, five; got != want {
+	if got, want := sum.getAugend(), five; got != want {
 		t.Errorf("Money.plus(): got %v want %v", got, want)
 	}
-	if got, want := sum.addend, five; got != want {
+	if got, want := sum.getAddend(), five; got != want {
 		t.Errorf("Money.plus(): got %v want %v", got, want)
 	}
-
 }
