@@ -125,5 +125,10 @@ func TestReduceMoneyDifferentCurrency(t *testing.T) {
 		t.Errorf("bank.reduce(): got %v want %v", got, want)
 	}
 }
+
+func TestIdentityRate(t *testing.T) {
+	bank := newBank()
+	if got, want := bank.rate(Dollar, Dollar), 1; got != want {
+		t.Errorf("bank.rate(): got %v want %v", got, want)
 	}
 }
