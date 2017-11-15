@@ -53,6 +53,7 @@ func (m money) getAddend() Money {
 	return m
 }
 
-func (m money) reduce(Currency) Money {
-	return m
+func (m money) reduce(bank Bank, to Currency) Money {
+	rate := bank.rate(m.currency, to)
+	return newMoney(to, m.amount/rate)
 }
