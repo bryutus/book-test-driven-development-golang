@@ -120,7 +120,10 @@ func TestReduceMoney(t *testing.T) {
 
 func TestReduceMoneyDifferentCurrency(t *testing.T) {
 	bank := newBank()
-	if got, want := bank.addRate(Franc, Dollar, 2), newMoney(Dollar, 1); got != want {
-		t.Errorf("bank.addRate(): got %v want %v", got, want)
+	bank.addRate(Franc, Dollar, 2)
+	if got, want := bank.reduce(newMoney(Franc, 2), Dollar), newMoney(Dollar, 1); got != want {
+		t.Errorf("bank.reduce(): got %v want %v", got, want)
+	}
+}
 	}
 }
