@@ -132,3 +132,13 @@ func TestIdentityRate(t *testing.T) {
 		t.Errorf("bank.rate(): got %v want %v", got, want)
 	}
 }
+
+func TestMiedAddition(t *testing.T) {
+	fiveBucks := newMoney(Dollar, 5)
+	tenFrancs := newMoney(Franc, 10)
+	bank := newBank()
+	bank.addRate(Franc, Dollar, 2)
+	if got, want := bank.reduce(fiveBucks.plus(tenFrancs), Dollar), newMoney(Dollar, 10); got != want {
+		t.Errorf("bank.plus(): got %v want %v", got, want)
+	}
+}
