@@ -10,7 +10,7 @@ func newSum(augend Money, addend Money) Expression {
 }
 
 func (s sum) reduce(bank Bank, to Currency) Money {
-	amount := s.augend.getAmount() + s.addend.getAmount()
+	amount := s.augend.reduce(bank, to).getAmount() + s.addend.reduce(bank, to).getAmount()
 	return newMoney(to, amount)
 }
 
