@@ -10,7 +10,6 @@ const (
 type Money interface {
 	times(int) Expression
 	equals(Money) bool
-	plus(Money) Expression
 	getAmount() int
 	getCurrency() Currency
 	Expression
@@ -33,7 +32,7 @@ func (m money) equals(money Money) bool {
 	return m.amount == money.getAmount() && m.currency == money.getCurrency()
 }
 
-func (m money) plus(addend Money) Expression {
+func (m money) plus(addend Expression) Expression {
 	return newSum(m, addend)
 }
 

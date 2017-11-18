@@ -5,13 +5,17 @@ type sum struct {
 	addend Expression
 }
 
-func newSum(augend Money, addend Money) Expression {
+func newSum(augend Money, addend Expression) Expression {
 	return sum{augend: augend, addend: addend}
 }
 
 func (s sum) reduce(bank Bank, to Currency) Money {
 	amount := s.augend.reduce(bank, to).getAmount() + s.addend.reduce(bank, to).getAmount()
 	return newMoney(to, amount)
+}
+
+func (s sum) plus(addend Expression) Expression {
+	return nil
 }
 
 func (s sum) getAugend() Expression {
