@@ -1,8 +1,8 @@
 package chapter15
 
 type sum struct {
-	augend Money
-	addend Money
+	augend Expression
+	addend Expression
 }
 
 func newSum(augend Money, addend Money) Expression {
@@ -14,10 +14,10 @@ func (s sum) reduce(bank Bank, to Currency) Money {
 	return newMoney(to, amount)
 }
 
-func (s sum) getAugend() Money {
+func (s sum) getAugend() Expression {
 	return s.augend
 }
 
-func (s sum) getAddend() Money {
+func (s sum) getAddend() Expression {
 	return s.addend
 }

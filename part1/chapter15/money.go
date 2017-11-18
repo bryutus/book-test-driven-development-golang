@@ -8,7 +8,7 @@ const (
 )
 
 type Money interface {
-	times(int) Money
+	times(int) Expression
 	equals(Money) bool
 	plus(Money) Expression
 	getAmount() int
@@ -25,7 +25,7 @@ func newMoney(currency Currency, amount int) Money {
 	return money{amount: amount, currency: currency}
 }
 
-func (m money) times(multiplier int) Money {
+func (m money) times(multiplier int) Expression {
 	return newMoney(m.currency, m.amount*multiplier)
 }
 
@@ -45,11 +45,11 @@ func (m money) getCurrency() Currency {
 	return m.currency
 }
 
-func (m money) getAugend() Money {
+func (m money) getAugend() Expression {
 	return m
 }
 
-func (m money) getAddend() Money {
+func (m money) getAddend() Expression {
 	return m
 }
 
