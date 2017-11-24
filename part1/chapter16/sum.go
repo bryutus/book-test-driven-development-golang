@@ -5,7 +5,7 @@ type sum struct {
 	addend Expression
 }
 
-func newSum(augend Money, addend Expression) Expression {
+func newSum(augend Expression, addend Expression) Expression {
 	return sum{augend: augend, addend: addend}
 }
 
@@ -15,7 +15,7 @@ func (s sum) reduce(bank Bank, to Currency) Money {
 }
 
 func (s sum) plus(addend Expression) Expression {
-	return nil
+	return newSum(s, addend)
 }
 
 func (s sum) getAugend() Expression {
