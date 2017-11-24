@@ -142,3 +142,14 @@ func TestMiedAddition(t *testing.T) {
 		t.Errorf("bank.plus(): got %v want %v", got, want)
 	}
 }
+
+func TestSumPlusMoney(t *testing.T) {
+	fiveBucks := newMoney(Dollar, 5)
+	tenFrancs := newMoney(Franc, 10)
+	bank := newBank()
+	bank.addRate(Franc, Dollar, 2)
+	sum := newSum(fiveBucks, tenFrancs).plus(fiveBucks)
+	if got, want := bank.reduce(sum, Dollar), newMoney(Dollar, 15); got != want {
+		t.Errorf("sum.plus(): got %v want %v", got, want)
+	}
+}
