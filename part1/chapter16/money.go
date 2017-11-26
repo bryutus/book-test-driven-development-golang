@@ -8,7 +8,6 @@ const (
 )
 
 type Money interface {
-	times(int) Expression
 	equals(Money) bool
 	getAmount() int
 	getCurrency() Currency

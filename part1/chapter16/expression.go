@@ -5,4 +5,5 @@ type Expression interface {
 	getAddend() Expression
 	reduce(Bank, Currency) Money
 	plus(Expression) Expression
+	times(int) Expression
 }
