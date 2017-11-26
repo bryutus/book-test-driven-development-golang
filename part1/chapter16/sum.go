@@ -14,6 +14,10 @@ func (s sum) reduce(bank Bank, to Currency) Money {
 	return newMoney(to, amount)
 }
 
+func (s sum) times(multiplier int) Expression {
+	return newSum(s.getAugend().times(multiplier), s.getAddend().times(multiplier))
+}
+
 func (s sum) plus(addend Expression) Expression {
 	return newSum(s, addend)
 }
