@@ -153,3 +153,14 @@ func TestSumPlusMoney(t *testing.T) {
 		t.Errorf("sum.plus(): got %v want %v", got, want)
 	}
 }
+
+func TestSumTImes(t *testing.T) {
+	fiveBucks := newMoney(Dollar, 5)
+	tenFrancs := newMoney(Franc, 10)
+	bank := newBank()
+	bank.addRate(Franc, Dollar, 2)
+	sum := newSum(fiveBucks, tenFrancs).times(2)
+	if got, want := bank.reduce(sum, Dollar), newMoney(Dollar, 20); got != want {
+		t.Errorf("sum.times(): got %v want %v", got, want)
+	}
+}
