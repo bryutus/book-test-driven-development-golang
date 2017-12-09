@@ -16,17 +16,17 @@ type TestCase struct {
 	name string
 }
 
-func newTestCase(name string) TestCase {
-	return TestCase{name: name}
+func newTestCase(name string) *TestCase {
+	return &TestCase{name: name}
 }
 
 type WasRun struct {
 	wasRun bool
-	TestCase
+	*TestCase
 }
 
-func newWasRun(name string) WasRun {
-	return WasRun{wasRun: false, TestCase: newTestCase(name)}
+func newWasRun(name string) *WasRun {
+	return &WasRun{wasRun: false, TestCase: newTestCase(name)}
 }
 
 func (w *WasRun) run() {
