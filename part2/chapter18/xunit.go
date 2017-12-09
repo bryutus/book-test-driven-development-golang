@@ -1,9 +1,12 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"reflect"
+)
 
 func main() {
-	test := newWasRun("testMethod")
+	test := newWasRun("TestMethod")
 	fmt.Println(test.wasRun)
 	test.run()
 	fmt.Println(test.wasRun)
@@ -19,9 +22,11 @@ func newWasRun(name string) WasRun {
 }
 
 func (w *WasRun) run() {
-	w.testMethod()
+	method := w.name
+	fv := reflect.ValueOf(w).MethodByName(method)
+	fv.Call(nil)
 }
 
-func (w *WasRun) testMethod() {
+func (w *WasRun) TestMethod() {
 	w.wasRun = true
 }
