@@ -6,9 +6,11 @@ import (
 )
 
 func main() {
-	test := newWasRun("TestMethod")
+	testcase := newTestCase("TestMethod")
+	test := newWasRun()
+
 	fmt.Println(test.wasRun)
-	test.run()
+	testcase.run(test)
 	fmt.Println(test.wasRun)
 }
 
@@ -22,15 +24,14 @@ func newTestCase(name string) *TestCase {
 
 type WasRun struct {
 	wasRun bool
-	*TestCase
 }
 
-func newWasRun(name string) *WasRun {
-	return &WasRun{wasRun: false, TestCase: newTestCase(name)}
+func newWasRun() *WasRun {
+	return &WasRun{wasRun: false}
 }
 
-func (w *WasRun) run() {
-	method := w.name
+func (t *TestCase) run(w *WasRun) {
+	method := t.name
 	fv := reflect.ValueOf(w).MethodByName(method)
 	fv.Call(nil)
 }
