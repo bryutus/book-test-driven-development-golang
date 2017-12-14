@@ -17,6 +17,7 @@ func (t *TestCase) run(w *WasRun) {
 	method := t.name
 	fv := reflect.ValueOf(w).MethodByName(method)
 	fv.Call(nil)
+	w.tearDown()
 }
 
 type WasRun struct {
@@ -33,4 +34,8 @@ func (w *WasRun) setUp() {
 
 func (w *WasRun) TestMethod() {
 	w.log += "testMethod "
+}
+
+func (w *WasRun) tearDown() {
+	w.log += "tearDown "
 }
