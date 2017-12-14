@@ -20,9 +20,8 @@ func (t *TestCase) run(w *WasRun) {
 }
 
 type WasRun struct {
-	wasRun   bool
-	wasSetUp bool
-	log      string
+	wasRun bool
+	log    string
 }
 
 func newWasRun() *WasRun {
@@ -31,7 +30,6 @@ func newWasRun() *WasRun {
 
 func (w *WasRun) setUp() {
 	w.wasRun = false
-	w.wasSetUp = true
 	w.log += "setUp "
 }
 
