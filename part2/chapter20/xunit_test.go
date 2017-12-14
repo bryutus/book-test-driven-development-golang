@@ -10,7 +10,7 @@ func TestTemplateMethod(testing *testing.T) {
 
 	testcase.run(test)
 
-	if got, want := test.log, "setUp testMethod "; got != want {
+	if got, want := test.log, "setUp testMethod tearDown "; got != want {
 		testing.Errorf("got %v want %v", got, want)
 	}
 }
