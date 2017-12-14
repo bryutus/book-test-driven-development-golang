@@ -21,7 +21,7 @@ func TestSetUp(testing *testing.T) {
 
 	testcase.run(test)
 
-	if got, want := test.wasSetUp, true; got != want {
+	if got, want := test.log, "setUp "; got != want {
 		testing.Errorf("got %v want %v", got, want)
 	}
 }
