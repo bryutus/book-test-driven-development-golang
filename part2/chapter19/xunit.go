@@ -13,17 +13,23 @@ func newTestCase(name string) *TestCase {
 }
 
 func (t *TestCase) run(w *WasRun) {
+	w.setUp()
 	method := t.name
 	fv := reflect.ValueOf(w).MethodByName(method)
 	fv.Call(nil)
 }
 
 type WasRun struct {
-	wasRun bool
+	wasRun   bool
+	wasSetUp bool
 }
 
 func newWasRun() *WasRun {
-	return &WasRun{wasRun: false}
+	return &WasRun{wasRun: false, wasSetUp: false}
+}
+
+func (w *WasRun) setUp() {
+	w.wasSetUp = true
 }
 
 func (w *WasRun) TestMethod() {
