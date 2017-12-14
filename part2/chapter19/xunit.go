@@ -29,6 +29,7 @@ func newWasRun() *WasRun {
 }
 
 func (w *WasRun) setUp() {
+	w.wasRun = false
 	w.wasSetUp = true
 }
 
