@@ -20,8 +20,7 @@ func (t *TestCase) run(w *WasRun) {
 }
 
 type WasRun struct {
-	wasRun bool
-	log    string
+	log string
 }
 
 func newWasRun() *WasRun {
@@ -29,11 +28,9 @@ func newWasRun() *WasRun {
 }
 
 func (w *WasRun) setUp() {
-	w.wasRun = false
 	w.log += "setUp "
 }
 
 func (w *WasRun) TestMethod() {
-	w.wasRun = true
 	w.log += "testMethod "
 }
