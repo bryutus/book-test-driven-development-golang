@@ -35,4 +35,5 @@ func (w *WasRun) setUp() {
 
 func (w *WasRun) TestMethod() {
 	w.wasRun = true
+	w.log += "testMethod "
 }
