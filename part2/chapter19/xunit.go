@@ -25,7 +25,7 @@ type WasRun struct {
 }
 
 func newWasRun() *WasRun {
-	return &WasRun{wasRun: false, wasSetUp: false}
+	return &WasRun{}
 }
 
 func (w *WasRun) setUp() {
