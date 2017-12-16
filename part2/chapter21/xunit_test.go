@@ -25,3 +25,14 @@ func TestSummary(testing *testing.T) {
 		testing.Errorf("got %v want %v", got, want)
 	}
 }
+
+func TestFailedSummary(testing *testing.T) {
+	testcase := newTestCase("TestBrokenMethod")
+	test := newWasRun()
+
+	result := testcase.run(test)
+
+	if got, want := result.summary(), "1 run, 1 failed"; got != want {
+		testing.Errorf("got %v want %v", got, want)
+	}
+}
