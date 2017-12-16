@@ -1,6 +1,7 @@
 package chapter21
 
 import (
+	"errors"
 	"fmt"
 	"reflect"
 )
@@ -55,6 +56,10 @@ func (w *WasRun) setUp() {
 
 func (w *WasRun) TestMethod() {
 	w.log += "testMethod "
+}
+
+func (w *WasRun) TestBrokenMethod() error {
+	return errors.New("Exception")
 }
 
 func (w *WasRun) tearDown() {
