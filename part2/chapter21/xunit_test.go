@@ -26,6 +26,7 @@ func TestSummary(testing *testing.T) {
 	}
 }
 
+/*
 func TestFailedSummary(testing *testing.T) {
 	testcase := newTestCase("TestBrokenMethod")
 	test := newWasRun()
@@ -36,3 +37,4 @@ func TestFailedSummary(testing *testing.T) {
 		testing.Errorf("got %v want %v", got, want)
 	}
 }
+*/
