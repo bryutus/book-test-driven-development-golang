@@ -10,8 +10,12 @@ type TestResult struct {
 }
 
 func newTestResult() *TestResult {
-	return &TestResult{runCount: 1}
+	return &TestResult{runCount: 0}
 
+}
+
+func (t *TestResult) testStarted() {
+	t.runCount++
 }
 
 func (t *TestResult) summary() string {
@@ -27,12 +31,14 @@ func newTestCase(name string) *TestCase {
 }
 
 func (t *TestCase) run(w *WasRun) *TestResult {
+	result := newTestResult()
+	result.testStarted()
 	w.setUp()
 	method := t.name
 	fv := reflect.ValueOf(w).MethodByName(method)
 	fv.Call(nil)
 	w.tearDown()
-	return newTestResult()
+	return result
 }
 
 type WasRun struct {
