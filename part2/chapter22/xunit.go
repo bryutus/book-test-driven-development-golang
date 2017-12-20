@@ -7,20 +7,24 @@ import (
 )
 
 type TestResult struct {
-	runCount int
+	runCount   int
+	errorCount int
 }
 
 func newTestResult() *TestResult {
-	return &TestResult{runCount: 0}
-
+	return &TestResult{runCount: 0, errorCount: 0}
 }
 
 func (t *TestResult) testStarted() {
 	t.runCount++
 }
 
+func (t *TestResult) testFailed() {
+	t.errorCount++
+}
+
 func (t *TestResult) summary() string {
-	return fmt.Sprintf("%v run, 0 failed", t.runCount)
+	return fmt.Sprintf("%v run, %v failed", t.runCount, t.errorCount)
 }
 
 type TestCase struct {
