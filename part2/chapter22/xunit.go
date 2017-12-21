@@ -41,7 +41,11 @@ func (t *TestCase) run(w *WasRun) *TestResult {
 	w.setUp()
 	method := t.name
 	fv := reflect.ValueOf(w).MethodByName(method)
-	fv.Call(nil)
+	res := fv.Call(nil)
+	err := res[0].Interface()
+	if err != nil {
+		result.testFailed()
+	}
 	w.tearDown()
 	return result
 }
@@ -58,8 +62,9 @@ func (w *WasRun) setUp() {
 	w.log += "setUp "
 }
 
-func (w *WasRun) TestMethod() {
+func (w *WasRun) TestMethod() error {
 	w.log += "testMethod "
+	return nil
 }
 
 func (w *WasRun) TestBrokenMethod() error {
